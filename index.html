@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+
 /* ─────────────────────────────────────────
    RESET
 ───────────────────────────────────────── */
@@ -64,7 +65,7 @@ body{
   height:852px;
   max-height:calc(100vh - 48px);
   max-height:calc(100dvh - 48px);
-  border-radius:50px;
+  border-radius:24px;
   overflow:hidden;
   background:#fff;
   box-shadow:0 40px 100px rgba(0,0,0,.25),0 0 0 1px rgba(0,0,0,.08);
@@ -83,7 +84,7 @@ body{
    Always shrinks to its natural height,
    never grows.
 ───────────────────────────────────────── */
-.sb,.hdr,.step-bar,.prog{
+.step-bar,.prog{
   -webkit-flex-shrink:0;
   flex-shrink:0;
 }
@@ -178,53 +179,9 @@ body{
   }
 }
 
-/* ─────────────────────────────────────────
-   STATUS BAR
-───────────────────────────────────────── */
-.sb{
-  background:#fff;
-  padding:15px 28px 0;
-  display:-webkit-box;display:-webkit-flex;display:flex;
-  -webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;
-  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
-}
-.sb-t{font-size:15px;font-weight:700;color:var(--fg);}
-.sb-i{display:-webkit-box;display:-webkit-flex;display:flex;gap:5px;-webkit-box-align:center;-webkit-align-items:center;align-items:center;}
-.sb-i svg{width:15px;height:15px;}
 
-/* ─────────────────────────────────────────
-   APP HEADER
-───────────────────────────────────────── */
-.hdr{
-  background:#fff;
-  padding:10px 18px 12px;
-  display:-webkit-box;display:-webkit-flex;display:flex;
-  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
-  -webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;
-  border-bottom:1px solid var(--br);
-  gap:10px;
-}
-.hdr-l{
-  display:-webkit-box;display:-webkit-flex;display:flex;
-  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
-  gap:9px;min-width:0;
-  -webkit-box-flex:1;-webkit-flex:1;flex:1;
-}
-.hdr-icon{
-  width:32px;height:32px;-webkit-flex-shrink:0;flex-shrink:0;
-  display:-webkit-box;display:-webkit-flex;display:flex;
-  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
-  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
-}
-.back-btn{
-  width:32px;height:32px;border-radius:8px;background:var(--sf);
-  border:none;display:-webkit-box;display:-webkit-flex;display:flex;
-  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
-  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
-  -webkit-appearance:none;appearance:none;cursor:pointer;
-}
-.hdr-title{font-size:15px;font-weight:700;color:var(--fg);line-height:1.3;}
-.hdr-sub{font-size:11px;color:var(--mu);font-weight:500;margin-top:1px;}
+
+
 
 /* ─────────────────────────────────────────
    STEP BAR
@@ -369,6 +326,94 @@ body{
 .hfoot{border-top:1px solid var(--br);padding-top:13px;text-align:center;padding-bottom:20px;}
 .hfoot span{font-size:10px;color:var(--mu);font-weight:500;}
 
+
+
+/* ─────────────────────────────────────────
+   GLOBAL TOPBAR  (black, above step bar)
+   Hidden on home/result, shown on inner screens.
+───────────────────────────────────────── */
+.topbar{
+  background:#000;
+  padding:0 16px;
+  height:52px;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+  gap:12px;
+  -webkit-flex-shrink:0;
+  flex-shrink:0;
+}
+.topbar.hide{display:none;}
+.topbar-back{
+  width:32px;height:32px;
+  border-radius:8px;
+  background:rgba(255,255,255,.12);
+  border:none;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+.topbar-back svg{color:#fff;}
+.topbar-title{
+  font-size:14px;font-weight:700;color:#fff;
+  -webkit-box-flex:1;-webkit-flex:1;flex:1;
+}
+/* Decentro logo capsule on right */
+.topbar-logo{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:100px;
+  padding:4px 10px;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+/* (legacy - replaced)
+   Sits outside .sbody, never scrolls.
+   Height ~52px matches native app nav.
+───────────────────────────────────────── */
+.topbar{
+  background:#000;
+  padding:0 16px;
+  height:52px;
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  -webkit-box-align:center;
+  -webkit-align-items:center;
+  align-items:center;
+  gap:12px;
+  -webkit-flex-shrink:0;
+  flex-shrink:0;
+}
+.topbar-back{
+  width:32px;height:32px;
+  border-radius:8px;
+  background:rgba(255,255,255,.1);
+  border:none;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-appearance:none;appearance:none;cursor:pointer;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+.topbar-back svg{color:#fff;}
+.topbar-title{
+  font-size:15px;font-weight:700;color:#fff;
+  -webkit-box-flex:1;-webkit-flex:1;flex:1;
+}
+.topbar-sub{
+  font-size:11px;color:rgba(255,255,255,.5);font-weight:500;
+  margin-top:1px;
+}
+
+
+
 /* ─────────────────────────────────────────
    SCAN SCREEN
 ───────────────────────────────────────── */
@@ -469,50 +514,32 @@ body{
 @-webkit-keyframes popIn{0%{-webkit-transform:scale(0)}70%{-webkit-transform:scale(1.15)}100%{-webkit-transform:none}}
 @keyframes popIn{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:none}}
 .pi{-webkit-animation:popIn .38s ease .06s both;animation:popIn .38s ease .06s both;}
+
 </style>
 </head>
 <body>
 <div class="phone">
 
-<!-- STATUS BAR -->
-<div class="sb">
-  <span class="sb-t">9:41</span>
-  <div class="sb-i">
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
-    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+<!-- GLOBAL TOPBAR (hidden on home, shown on inner screens) -->
+<div class="topbar hide" id="global-topbar">
+  <button class="topbar-back" id="topbar-back-btn" onclick="goBack()">
+    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <span class="topbar-title">Offline Verification</span>
+  <div class="topbar-logo">
+    <svg width="66" height="13" viewBox="0 0 2749.67 538.23" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+          <style>.tw1{fill:#0092ff}.tw2{fill:#fff}</style>
+          <polygon class="tw2" points="1589.49 315.17 1435.68 121.4 1435.23 120.87 1375.32 120.87 1375.32 417.62 1435.64 417.62 1435.64 223.31 1589.45 417.08 1589.9 417.62 1649.81 417.62 1649.81 120.87 1589.49 120.87 1589.49 315.17"/>
+          <rect class="tw1" x="120.6" y="357.11" width="60.28" height="60.28"/>
+          <path class="tw2" d="M250.46,120.82H120.69v176.27h60.11v-116h68c62.42,0,102.83,34.9,102.83,88.17s-40.41,88.16-102.83,88.16h-7.73v60.25h9.39c96.25,0,162-59.37,162-148.41s-65.77-148.44-162-148.44h0Z"/>
+          <path class="tw2" d="M2587.03,163.29c-27.04-27.03-64.55-41.85-105.7-41.85s-78.72,14.92-105.78,42c-27.07,27.08-42.04,64.69-42.04,105.81s14.93,78.69,42.04,105.8,64.64,42.01,105.78,42.01,78.72-14.87,105.74-41.85c27.02-26.99,42.04-64.69,42.04-105.95s-14.97-78.9-42.09-105.95l.01-.02ZM2418.6,203.4c16.03-16.67,38.28-25.86,62.69-25.86s46.6,9.19,62.69,25.86c16.09,16.67,24.97,40.13,24.97,65.84s-8.86,49.08-24.97,65.83c-16.1,16.75-38.28,25.86-62.69,25.86s-46.66-9.18-62.69-25.86-24.97-40.13-24.97-65.83,8.87-49.09,24.97-65.84Z"/>
+          <path class="tw2" d="M1021.78,368.71l1.07,1.17c-1.7,1.91-3.46,3.77-5.28,5.59-24.05,24.05-56.46,38.49-92.31,41.38-4.43.35-8.91.53-13.43.53s-8.91-.18-13.29-.53c-4.49-.36-8.92-.9-13.29-1.61l-6.49-1.21h-.02l-6.38-1.47h-.02l-2.37-.62c-3.15-.85-6.26-1.8-9.33-2.84l-2.3-.8c-1.85-.66-3.69-1.36-5.51-2.1l-3.6-1.52-.01,0-3.55-1.61-.01,0c-14.71-6.92-28.07-16.23-39.55-27.72-27.11-27.15-42.04-64.75-42.04-105.92s14.97-78.82,42.04-105.93c15.66-15.67,34.81-27.28,56.15-34.3l2.07-.66h.01l7.47-2.12,5.07-1.21h.01c5.44-1.2,11-2.12,16.65-2.75l6.82-.61c3.79-.26,7.61-.39,11.47-.39l2.89.02,1.63.04,2.57.09,1.91.09,2.14.12.4.03c2.12.15,4.23.33,6.33.56l3.18.37,2.68.37c2.27.33,4.52.7,6.75,1.12l4.64.95,4.58,1.08,2.27.59c2.27.62,4.51,1.28,6.72,1.98,21.69,6.94,41.15,18.61,57.01,34.48,2.01,2,3.95,4.06,5.81,6.19l-36.33,35.62-.56.48-5.5,5.4c-1.98-2.63-4.12-5.15-6.41-7.52-16.09-16.69-38.28-25.89-62.69-25.89-22.62,0-43.38,7.9-59.06,22.34l-.55.51-3.08,3.04c-16.09,16.77-24.96,40.19-24.96,65.91s8.94,49.21,24.96,65.9l2.77,2.75c15.78,14.96,36.89,23.14,59.92,23.14,24.41,0,46.59-9.12,62.69-25.89,2.23-2.32,4.32-4.77,6.26-7.34l31.49,31.26.54.59,8.95,8.89v-.02Z"/>
+          <polygon class="tw2" points="1710.09 180.9 1810.42 180.9 1810.42 416.9 1870.7 416.9 1870.7 180.9 1971.03 180.9 1971.03 120.62 1710.09 120.62 1710.09 180.9"/>
+          <path class="tw2" d="M2273.07,226.87c0-61.16-49.34-106.01-114.55-106.01h-127.21v296.76h60.26v-85.62h45.95l11.06-.34,57.67,85.96h66.82l-64.21-97.33c41.46-16.21,64.21-50.5,64.21-93.42h0ZM2091.59,181.14h64.33c56.97,0,56.97,38.25,56.97,45.73,0,7.93,0,44.81-56.97,44.81h-64.33v-90.54h0Z"/>
+          <polygon class="tw2" points="532.99 299.14 643.44 299.14 643.44 238.86 532.99 238.86 532.99 181.2 703.17 181.2 703.17 120.62 472.75 120.62 472.75 417.38 703.72 417.38 703.72 357.29 532.99 357.29 532.99 299.14"/>
+          <polygon class="tw2" points="1144.31 299.14 1254.76 299.14 1254.76 238.86 1144.31 238.86 1144.31 181.2 1314.48 181.2 1314.48 120.62 1084.06 120.62 1084.06 417.38 1315.04 417.38 1315.04 357.29 1144.31 357.29 1144.31 299.14"/>
+        </svg>
   </div>
-</div>
-
-<!-- HEADER -->
-<div class="hdr">
-  <div class="hdr-l">
-    <div class="hdr-icon" id="hdr-icon">
-      <!-- Aadhaar icon shown on home/result; back arrow on inner screens -->
-      <svg id="hdr-aadhaar-icon" width="28" height="28" viewBox="54 54 885 470" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#D42736" d="M281.6,522.4c5.9-6.7,11.1-12.7,16.5-18.5c20.6-22.3,41.9-43.9,67.2-61c18.5-12.5,37.8-23.4,59.8-28.4c28.6-6.4,52.5,1.3,70.9,24.7c3,3.8,5.7,7.9,9.4,11.1c4.6,4,9.8,6.5,16.1,5.1c5-1.1,8-4.5,8.4-9.6c0.5-6.5-0.9-12.7-3.6-18.5c-13.1-28.9-35.3-45.5-67.1-49.3c-25.6-3-49,3.6-71.5,14.7c-31,15.3-57.9,36.1-83.2,59.3c-22.7,20.8-43.5,43.3-61.6,68.3c-0.9,1.3-1.9,2.1-3.6,2.1c-14-0.1-28,0-41.9,0c-0.6-1,0.1-1.5,0.5-2c28.5-38.6,59.2-75.4,95.9-106.8C324,387.6,357,366.1,394.9,353c24.3-8.4,49.2-12.2,74.8-9.2c34.7,4,61.4,21.1,80.2,50.3c14.2,22,22,46.5,26.4,72.1c3,17.4,4,34.9,3.7,52.5c-0.1,3-1,3.8-3.9,3.7c-8.7-0.2-17.5-0.2-26.2,0c-3.3,0.1-4.4-0.6-4.4-4.2c0-11.2-0.3-22.5-3.6-33.3c-0.6-2-1.4-4-2.4-5.9c-4.5-8.2-14.7-8.4-19.7-0.4c-3.2,5.2-3.9,11-4.1,16.9c-0.4,7.7-0.6,15.5-0.5,23.2c0,3-1,3.7-3.8,3.7c-8.5-0.2-17-0.2-25.5,0c-3.3,0.1-3.8-1-3.6-4c1-14.4,0.8-28.7-5-42.3c-5.6-13.3-14.4-23-29.4-25.3c-12.1-1.9-23.6,0.9-34.7,5.5c-24.4,10.1-44.8,25.9-63.3,44.4c-6.2,6.2-12,12.7-17.6,19.4c-1.2,1.4-2.2,2.4-4.3,2.4C312.8,522.4,297.8,522.4,281.6,522.4z"/>
-        <path fill="#D42736" d="M650,498.7c0,7-0.1,14,0,21c0,2.4-0.9,2.9-3.1,2.9c-9.4-0.1-18.7-0.1-28.1,0c-2.6,0-3.4-0.7-3.4-3.4c0-18.1-1-36.2-3.1-54.1c-4.7-38.6-14.9-75.3-39.2-106.7c-23.6-30.5-54.9-47.9-92.8-53.6c-39.9-6-77.7,2.1-114.3,17.6c-39.4,16.7-74,40.7-105.7,69.1c-11,9.8-21.5,20.1-34.5,27.5c-5.8,3.3-11.7,3.7-15.1,0.7c-3.3-2.8-4-9.1-1.6-15.1c2.6-6.5,7.2-11.6,11.8-16.7c39.3-44,85.6-78.4,140.2-101.3c29.1-12.2,59.5-19.6,91.2-19.7c68.5-0.1,121.4,29.4,160.2,85.2c15.9,22.9,24.8,48.7,30.5,75.7C647.8,451.1,649.9,474.8,650,498.7z"/>
-        <path fill="#D42736" d="M231.1,321.3c14.8-20.6,32.1-38.7,51.6-54.7c36.5-30,77.4-51.7,124-61c71.8-14.4,138.9-3.4,199.3,39.5c42.3,30,70.8,70.8,89.5,118.7c12.8,32.8,19.6,66.8,21.9,101.9c0.9,13.1,1,26.2,0.7,39.3c-0.2,8.7-5,15.2-12.1,16.9c-6.9,1.7-12-0.7-15.1-7.1c-2.6-5.2-2.6-10.9-2.6-16.5c-0.1-34.1-5.2-67.5-15.3-100.2c-11.3-36.7-28.2-70.5-53.3-99.9c-29.4-34.5-66.6-55.3-110.9-64c-28.8-5.6-57.7-7-86.9-3.6c-34.4,4.1-66.9,14.4-98.1,29.4c-32.2,15.5-61.7,35.3-89.1,58.2C233.5,319.3,232.3,320.3,231.1,321.3z"/>
-        <path fill="#F9B50F" d="M604.8,206.1c2.1-0.3,3.5,0.6,5,1.1C719.1,245.8,802.3,340.8,825.8,454c4.4,21.3,6.9,42.8,7.2,64.6c0,3.2-0.9,3.9-4,3.9c-19.4-0.1-38.7-0.2-58.1,0c-3.3,0-4.2-0.8-4.1-4.1c1.1-38.1-3.2-75.7-13.5-112.4c-15.3-54.3-42-102.1-80.7-143.3c-19.5-20.8-41.2-38.9-65-54.5C606.7,207.6,605.9,206.9,604.8,206.1z"/>
-        <path fill="#F9B50F" d="M496.5,80.3c7.2,12.8,19.3,20,29.5,29.2c14.1,12.7,25.1,27.4,30.3,45.9c0.5,1.8,0.9,3.6,1.3,5.4c0.9,4.4,0.9,4.4-3.7,3.7c-38.2-6.1-76.3-6.1-114.5,0c-4.7,0.8-5,0.6-3.9-4.1c4.6-20.9,16.3-37.5,32.2-51.4c4.1-3.6,8.4-7.1,12.6-10.6C486.5,93.3,492.3,87.9,496.5,80.3z"/>
-        <path fill="#F9B50F" d="M258.4,215.3c0-16.9,4-31.1,9.2-45c3.5-9.3,7.6-18.5,7.5-28.7c0-1.3,0.3-2,1.8-1.2c11.3,6.4,24.1,6.8,36.4,9.3c20.1,4,38.3,11.7,52.9,26.6c5.5,5.6,5.5,5.6-1.7,8.4c-35.4,13.8-67.7,32.7-97.2,56.6c-3.3,2.7-3.2,2.7-4.6-1.4C259.7,231.4,258.6,222.5,258.4,215.3z"/>
-        <path fill="#F9B50F" d="M717.9,139.5c-0.3,13.4,5.6,24.8,9.7,36.5c5.6,16.1,8.6,32.5,6.2,49.5c-0.7,5.2-2.1,10.2-3.6,15.2c-0.9,3.1-1.9,2.6-3.9,0.9c-24.9-20.4-52.1-37.2-81.6-50.3c-6.4-2.8-12.8-5.6-19.4-7.9c-3.7-1.3-2.9-2.4-0.9-4.5c11-12.3,24.7-20.4,40.3-25.5c7.2-2.4,14.7-3.8,22.2-5.1C697.5,146.6,708.1,145.4,717.9,139.5z"/>
-        <path fill="#F9B50F" d="M879.9,301.3c-7.4,12.3-7.7,26-10.4,39.1c-4.3,20.8-12.6,39.3-28.7,53.8c-1,0.9-1.9,2-3.5,2.4c-4.8-12.6-10.1-24.9-16.2-36.9c-12-23.8-26.5-46-43.4-66.6c-2-2.5-1.9-3.2,1.2-4.2c20.1-6.7,40-5.1,59.9,1.2c10.4,3.3,20.4,8.1,31.2,10.4C873.1,301.1,876.3,301,879.9,301.3z"/>
-        <path fill="#F9B50F" d="M155.6,397.1c-14.3-11.5-23-26-28.5-42.7c-3.3-10.2-4.8-20.8-6.7-31.4c-1.2-6.8-2.8-13.4-6.1-19.5c-0.7-1.3-1.1-2.3,1-2.3c9.4,0.1,17.8-3.4,26.3-6.6c15.5-5.9,31.2-10.5,48-10c8.3,0.3,16.3,1.7,24.2,4.2c3.3,1.1,3.5,1.9,1.3,4.5c-18.6,22.5-34.1,47-46.7,73.3C163.8,376.4,159.6,386.4,155.6,397.1z"/>
-        <path fill="#F9B50F" d="M54.5,522c12.1-7.1,19.2-18.4,27.8-28.2c14-15.8,30.4-27.7,51.4-32.3c0.7-0.2,1.5-0.2,2.2-0.4c2-0.6,2.7,0,2.3,2.1c-1.9,10.4-3.2,20.9-3.8,31.5c-0.5,8.2-0.9,16.4-1.2,24.7c-0.1,2.1-0.4,3.1-2.9,3.1c-24.9-0.1-49.7-0.1-74.6-0.1C55.6,522.4,55.4,522.3,54.5,522z"/>
-        <path fill="#F9B50F" d="M937.7,522.4c-25.1,0-50.2,0-75.3,0.1c-2.7,0-2.7-1.3-2.7-3.2c0-18.6-1.7-37.1-4.7-55.4c-0.6-3.4,0.8-3,3-2.6c16.2,3.3,30.1,11,42.3,22c5.4,4.8,10.2,10.3,14.9,15.8C922.2,507.2,928.4,516.2,937.7,522.4z"/>
-        <path fill="#D42736" d="M369.6,522.3c13.7-13.8,27.1-26.5,44.5-33.8c3.8-1.6,7.8-2.6,11.9-3.1c12.8-1.7,21.7,4.9,24.1,17.8c1.1,5.7,0.9,11.4,0.2,17.1c-0.2,1.8-1.1,2.2-2.7,2.2c-7.6,0-15.2,0-22.8,0.1c-0.9,0-1.9,0.2-2.3-1.2c-1-3.2-3.6-3.5-6.3-3.1c-1.6,0.2-3.3,0.5-4.6,1.3c-5.2,3.1-10.9,2.8-16.7,2.8C386.8,522.3,378.7,522.3,369.6,522.3z"/>
-        <path fill="#D42736" d="M167.4,466.5c0.3-1.7,0.5-3.5,0.9-5.1c2.8-10,8-18.8,15.3-26.1c7.2-7.2,17.7-4.8,20.9,4.2c1,2.9,0.9,5.9,0.2,8.8c-0.5,2.3-1.5,4.5-2.9,6.4c-4.4,6.1-9.1,11.9-14.8,16.7c-1.7,1.4-3.6,2.7-5.6,3.7C173.1,479.4,167.4,475.9,167.4,466.5z"/>
-      </svg>
-      <button class="back-btn" id="hdr-back-btn" onclick="goBack()" style="display:none;">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path d="M15 18l-6-6 6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-    <div>
-      <div class="hdr-title" id="hdr-title">OVSE Verification</div>
-      <div class="hdr-sub" id="hdr-sub">Select a verification flow</div>
-    </div>
-  </div>
-  <svg width="74" height="14" viewBox="0 0 2749.67 538.23" xmlns="http://www.w3.org/2000/svg"><polygon class="d2" points="1589.49 315.17 1435.68 121.4 1435.23 120.87 1375.32 120.87 1375.32 417.62 1435.64 417.62 1435.64 223.31 1589.45 417.08 1589.9 417.62 1649.81 417.62 1649.81 120.87 1589.49 120.87 1589.49 315.17"/><rect class="d1" x="120.6" y="357.11" width="60.28" height="60.28"/><path class="d2" d="M250.46,120.82H120.69v176.27h60.11v-116h68c62.42,0,102.83,34.9,102.83,88.17s-40.41,88.16-102.83,88.16h-7.73v60.25h9.39c96.25,0,162-59.37,162-148.41s-65.77-148.44-162-148.44h0Z"/><path class="d2" d="M2587.03,163.29c-27.04-27.03-64.55-41.85-105.7-41.85s-78.72,14.92-105.78,42c-27.07,27.08-42.04,64.69-42.04,105.81s14.93,78.69,42.04,105.8,64.64,42.01,105.78,42.01,78.72-14.87,105.74-41.85c27.02-26.99,42.04-64.69,42.04-105.95s-14.97-78.9-42.09-105.95l.01-.02ZM2418.6,203.4c16.03-16.67,38.28-25.86,62.69-25.86s46.6,9.19,62.69,25.86c16.09,16.67,24.97,40.13,24.97,65.84s-8.86,49.08-24.97,65.83c-16.1,16.75-38.28,25.86-62.69,25.86s-46.66-9.18-62.69-25.86-24.97-40.13-24.97-65.83,8.87-49.09,24.97-65.84Z"/><path class="d2" d="M1021.78,368.71l1.07,1.17c-1.7,1.91-3.46,3.77-5.28,5.59-24.05,24.05-56.46,38.49-92.31,41.38-4.43.35-8.91.53-13.43.53s-8.91-.18-13.29-.53c-4.49-.36-8.92-.9-13.29-1.61-2.18-.36-4.35-.77-6.49-1.21h-.02c-2.15-.45-4.28-.94-6.38-1.47h-.02c-.79-.2-1.58-.41-2.37-.62-3.15-.85-6.26-1.8-9.33-2.84-.77-.26-1.53-.53-2.3-.8-1.85-.66-3.69-1.36-5.51-2.1-1.21-.5-2.41-1-3.6-1.52,0,0-.01.01-.01,0-1.19-.52-2.37-1.06-3.55-1.61l-.01,0c-14.71-6.92-28.07-16.23-39.55-27.72-27.11-27.15-42.04-64.75-42.04-105.92s14.97-78.82,42.04-105.93c15.66-15.67,34.81-27.28,56.15-34.3l2.07-.66h.01c2.46-.76,4.95-1.47,7.47-2.12l5.07-1.21h.01c5.44-1.2,11-2.12,16.65-2.75l6.82-.61c3.79-.26,7.61-.39,11.47-.39l2.89.02,1.63.04,2.57.09,1.91.09,2.14.12.4.03c2.12.15,4.23.33,6.33.56l3.18.37,2.68.37c2.27.33,4.52.7,6.75,1.12l4.64.95,4.58,1.08,2.27.59c2.27.62,4.51,1.28,6.72,1.98,21.69,6.94,41.15,18.61,57.01,34.48,2.01,2,3.95,4.06,5.81,6.19l-36.33,35.62-.56.48-5.5,5.4c-1.98-2.63-4.12-5.15-6.41-7.52-16.09-16.69-38.28-25.89-62.69-25.89-22.62,0-43.38,7.9-59.06,22.34l-.55.51-3.08,3.04c-16.09,16.77-24.96,40.19-24.96,65.91s8.94,49.21,24.96,65.9l2.77,2.75c15.78,14.96,36.89,23.14,59.92,23.14,24.41,0,46.59-9.12,62.69-25.89,2.23-2.32,4.32-4.77,6.26-7.34l31.49,31.26.54.59,8.95,8.89v-.02Z"/><polygon class="d2" points="1710.09 180.9 1810.42 180.9 1810.42 416.9 1870.7 416.9 1870.7 180.9 1971.03 180.9 1971.03 120.62 1710.09 120.62 1710.09 180.9"/><path class="d2" d="M2273.07,226.87c0-61.16-49.34-106.01-114.55-106.01h-127.21v296.76h60.26v-85.62h45.95l11.06-.34,57.67,85.96h66.82l-64.21-97.33c41.46-16.21,64.21-50.5,64.21-93.42h0ZM2091.59,181.14h64.33c56.97,0,56.97,38.25,56.97,45.73,0,7.93,0,44.81-56.97,44.81h-64.33v-90.54h0Z"/><polygon class="d2" points="532.99 299.14 643.44 299.14 643.44 238.86 532.99 238.86 532.99 181.2 703.17 181.2 703.17 120.62 472.75 120.62 472.75 417.38 703.72 417.38 703.72 357.29 532.99 357.29 532.99 299.14"/><polygon class="d2" points="1144.31 299.14 1254.76 299.14 1254.76 238.86 1144.31 238.86 1144.31 181.2 1314.48 181.2 1314.48 120.62 1084.06 120.62 1084.06 417.38 1315.04 417.38 1315.04 357.29 1144.31 357.29 1144.31 299.14"/></svg>
 </div>
 
 <!-- STEP BAR -->
@@ -634,6 +661,7 @@ body{
 <!-- ══ SCAN ══ -->
 <div class="screen" id="sc-scan">
 <div class="sbody">
+  
   <div class="flow-pill">
     <div class="flow-pill-in">
       <div class="fp-icon" id="fp-icon"></div>
@@ -709,7 +737,8 @@ body{
 
 <!-- ══ OTP ══ -->
 <div class="screen" id="sc-otp">
-<div class="sbody su">
+<div class="sbody">
+  
   <div class="aad-chip">
     <div class="aad-chip-in">
       <div class="aci"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2.5"/></svg></div>
@@ -741,6 +770,7 @@ body{
 
 <!-- ══ RESULT ══ -->
 <div class="screen" id="sc-result">
+<div class="sbody">
 <div class="res-hero su">
   <div class="res-ring pi">
     <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
@@ -760,6 +790,7 @@ body{
   <div class="res-row"><span class="rr-l">UIDAI Response</span><span class="rr-v">200 OK</span></div>
   <div class="res-row"><span class="rr-l">Method</span><span class="rr-v">OVSE - QR Offline</span></div>
 </div>
+</div><!-- /result sbody -->
 <div class="sfooter">
   <button class="btn-p" onclick="startNew()">+ Verify Another</button>
   <button class="btn-s" onclick="goHome()">Back to Home</button>
@@ -769,7 +800,6 @@ body{
 </div><!-- /result -->
 
 </div><!-- /phone -->
-</div><!-- /wrap -->
 
 <script>
 var FLOWS = {
@@ -796,43 +826,32 @@ function showSc(id) {
   }
   document.getElementById("sc-" + id).classList.add("active");
 
-  var sb = document.getElementById("step-bar");
-  var pb = document.getElementById("prog-bar");
-  var ai = document.getElementById("hdr-aadhaar-icon");
-  var bb = document.getElementById("hdr-back-btn");
-  var ht = document.getElementById("hdr-title");
-  var hs = document.getElementById("hdr-sub");
+  var sb  = document.getElementById("step-bar");
+  var pb  = document.getElementById("prog-bar");
+  var tb  = document.getElementById("global-topbar");
+  var tbb = document.getElementById("topbar-back-btn");
 
   if (id === "home") {
+    tb.className = "topbar hide";
     sb.className = "step-bar hide";
     pb.style.display = "none";
-    ai.style.display = "block";
-    bb.style.display = "none";
-    ht.textContent = "OVSE Verification";
-    hs.textContent = "Select a verification flow";
   } else if (id === "scan") {
+    tb.className = "topbar";
+    tbb.style.display = "flex";
     sb.className = "step-bar";
     pb.style.display = "block";
-    ai.style.display = "none";
-    bb.style.display = "block";
     setStepUI(1);
-    ht.textContent = "Verify Identity";
-    hs.textContent = FLOWS[flow].name;
   } else if (id === "otp") {
+    tb.className = "topbar";
+    tbb.style.display = "flex";
     sb.className = "step-bar";
     pb.style.display = "block";
-    ai.style.display = "none";
-    bb.style.display = "block";
     setStepUI(2);
-    ht.textContent = "Enter OTP";
-    hs.textContent = "Step 2 of 3 - " + FLOWS[flow].name;
   } else if (id === "result") {
+    tb.className = "topbar";
+    tbb.style.display = "none";
     sb.className = "step-bar hide";
     pb.style.display = "none";
-    ai.style.display = "block";
-    bb.style.display = "none";
-    ht.textContent = "Verification Complete";
-    hs.textContent = FLOWS[flow].name;
   }
   window.scrollTo(0, 0);
 }
