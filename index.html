@@ -84,7 +84,7 @@ body{
    Always shrinks to its natural height,
    never grows.
 ───────────────────────────────────────── */
-.step-bar,.prog{
+.step-bar,.step-bar-d,.prog{
   -webkit-flex-shrink:0;
   flex-shrink:0;
 }
@@ -112,7 +112,11 @@ body{
 /* Inner screens: flex column, fill space */
 #sc-scan.active,
 #sc-otp.active,
-#sc-result.active{
+#sc-result.active,
+#sc-d1.active,
+#sc-d2.active,
+#sc-d3.active,
+#sc-d4.active{
   display:-webkit-box;
   display:-webkit-flex;
   display:flex;
@@ -272,9 +276,13 @@ body{
 .c-chk.on{background:#000;border-color:#000;}
 .c-chk svg{width:11px;height:11px;color:#fff;display:none;}
 .c-chk.on svg{display:block;}
-.c-txt{font-size:11.5px;color:#0369a1;line-height:1.55;font-weight:500;}
-.c-txt strong{font-weight:700;color:#0c4a6e;display:block;margin-bottom:2px;}
-.info-note{background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:10px 12px;font-size:11px;color:#0369a1;line-height:1.5;font-weight:500;}
+.c-txt{font-size:12px;color:#0369a1;line-height:1.6;font-weight:500;}
+.c-txt strong{font-weight:700;color:#0c4a6e;display:block;margin-bottom:3px;}
+.info-note{
+  background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;
+  padding:12px 14px;font-size:12px;color:#0369a1;line-height:1.6;font-weight:500;
+}
+.info-note strong{font-weight:700;color:#0c4a6e;}
 .home-ind{height:28px;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;}
 .home-bar{width:120px;height:4px;background:#000;border-radius:2px;opacity:.09;}
 
@@ -287,7 +295,7 @@ body{
   border-top:1px solid var(--br);
   margin-top:10px;
 }
-.pow-strip span{font-size:10px;color:var(--mu);font-weight:500;}
+.pow-strip span{font-size:10px;color:var(--mu);font-weight:500;letter-spacing:.2px;}
 
 /* ─────────────────────────────────────────
    HOME SCREEN
@@ -442,8 +450,8 @@ body{
 @keyframes scanMove{0%{top:14px;opacity:0}10%{opacity:1}90%{opacity:1}100%{top:calc(100% - 14px);opacity:0}}
 .sl{position:absolute;left:12px;right:12px;height:2px;background:-webkit-linear-gradient(left,transparent,#000 40%,#000 60%,transparent);background:linear-gradient(90deg,transparent,#000 40%,#000 60%,transparent);border-radius:1px;-webkit-animation:scanMove 2s ease-in-out infinite;animation:scanMove 2s ease-in-out infinite;z-index:3;}
 .qr-svg{position:absolute;top:0;right:0;bottom:0;left:0;padding:20px;opacity:.09;}
-.scan-state{font-size:11px;font-weight:600;color:var(--mu);margin-bottom:6px;}
-.qr-hint{font-size:11px;color:var(--su);font-weight:500;line-height:1.5;}
+.scan-state{font-size:12px;font-weight:600;color:var(--mu);margin-bottom:6px;}
+.qr-hint{font-size:12px;color:var(--su);font-weight:500;line-height:1.55;margin-top:4px;}
 .qr-hint strong{color:var(--fg);}
 .div-row{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:8px;margin-bottom:12px;}
 .div-line{-webkit-box-flex:1;-webkit-flex:1;flex:1;height:1px;background:var(--br);}
@@ -452,30 +460,7 @@ body{
 /* ─────────────────────────────────────────
    OTP SCREEN
 ───────────────────────────────────────── */
-.aad-chip{display:inline-block;background:var(--sf);border:1px solid var(--br);border-radius:100px;padding:6px 13px 6px 7px;margin-bottom:13px;}
-.aad-chip-in{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:7px;}
-.aci{width:22px;height:22px;border-radius:50%;background:#000;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-flex-shrink:0;flex-shrink:0;}
 .aci svg{width:11px;height:11px;color:#fff;}
-.acn{font-size:13px;font-weight:700;color:var(--fg);letter-spacing:1px;font-family:monospace;}
-.otp-ttl{font-size:18px;font-weight:700;margin-bottom:3px;}
-.otp-sub{font-size:13px;color:var(--su);line-height:1.5;margin-bottom:18px;}
-.otp-row{display:-webkit-box;display:-webkit-flex;display:flex;gap:7px;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;margin-bottom:10px;}
-.otp-box{
-  width:46px;height:52px;border:1.5px solid var(--br);border-radius:10px;
-  font-size:22px;font-weight:700;text-align:center;
-  font-family:inherit;color:var(--fg);background:#fff;outline:none;
-  -webkit-appearance:none;appearance:none;
-}
-.otp-box:focus{border-color:#000;}
-.otp-box.filled{border-color:#000;background:var(--sf);}
-.otp-box.err{border-color:#fb7185;background:#fff1f2;}
-.otp-meta{text-align:center;font-size:12px;color:var(--mu);margin-bottom:14px;}
-.otp-meta .tt{color:#000;font-weight:700;}
-.resend{color:#000;font-weight:600;text-decoration:underline;cursor:pointer;}
-.vp{background:var(--sf);border-radius:var(--r);padding:12px;margin-top:14px;}
-.vp-lbl{font-size:11px;font-weight:600;color:var(--su);margin-bottom:7px;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}
-.vp-track{height:4px;background:var(--br);border-radius:2px;}
-.vp-fill{height:100%;background:#000;border-radius:2px;width:0%;}
 
 /* ─────────────────────────────────────────
    RESULT SCREEN
@@ -505,8 +490,271 @@ body{
 .rr-v{font-size:12px;font-weight:600;color:var(--fg);text-align:right;}
 .rr-v.mono{font-family:monospace;font-size:11px;}
 
+
 /* ─────────────────────────────────────────
-   ANIMATIONS
+   DIRECT FLOW — HOME ENTRY CARD
+───────────────────────────────────────── */
+.home-flow-desc{font-size:12px;color:var(--su);line-height:1.5;margin-bottom:10px;padding:0 2px;}
+.direct-card{
+  background:#000;border-radius:var(--r);padding:16px;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  gap:12px;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.direct-card-left{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:flex-start;-webkit-align-items:flex-start;align-items:flex-start;
+  gap:12px;-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:0;
+}
+.direct-card .fc-arr{background:rgba(255,255,255,.12);}
+.direct-card .fc-arr svg{color:#fff;}
+.direct-icon{
+  width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.12);
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+.direct-name{font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;}
+.direct-desc{font-size:11px;color:rgba(255,255,255,.5);line-height:1.4;}
+.flow-divider{text-align:center;position:relative;margin-bottom:16px;}
+.flow-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--br);}
+.flow-divider span{position:relative;background:#fff;padding:0 10px;font-size:10px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.5px;}
+
+/* ─────────────────────────────────────────
+   DIRECT FLOW STEP BAR  (4 steps)
+───────────────────────────────────────── */
+.step-bar-d{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  padding:0 18px;height:46px;background:#fff;border-bottom:1px solid var(--br);
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+.step-bar-d.hide{display:none;}
+
+/* ─────────────────────────────────────────
+   DIRECT FLOW — CUSTOMER SCREENS
+───────────────────────────────────────── */
+/* Shared typography */
+.d-section-title{font-size:18px;font-weight:700;color:var(--fg);margin-bottom:10px;}
+.d-body-text{font-size:13px;color:var(--su);line-height:1.55;}
+
+/* Requester card (step 1) */
+.d-requester{
+  background:var(--sf);border-radius:var(--r);padding:14px;margin-bottom:18px;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;gap:12px;
+}
+.d-requester-logo{
+  width:42px;height:42px;border-radius:10px;background:#000;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+.d-requester-info{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:0;}
+.d-requester-name{font-size:14px;font-weight:700;color:var(--fg);}
+.d-requester-tag{font-size:10px;color:var(--mu);margin-top:2px;font-weight:500;}
+.d-verified-badge{
+  width:28px;height:28px;border-radius:50%;background:#dcfce7;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+
+/* Info card (step 1) */
+.d-info-card{border:1.5px solid var(--br);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
+.d-info-row{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  gap:10px;padding:11px 14px;border-bottom:1px solid var(--br);
+  -webkit-box-align:flex-start;-webkit-align-items:flex-start;align-items:flex-start;
+}
+.d-info-icon{
+  width:26px;height:26px;border-radius:6px;background:var(--sf);
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-flex-shrink:0;flex-shrink:0;margin-top:1px;
+}
+.d-info-k{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.4px;margin-bottom:2px;}
+.d-info-v{font-size:12px;font-weight:600;color:var(--fg);}
+
+/* Note */
+.d-note{
+  background:#fffbeb;border:1px solid #fde68a;border-radius:8px;
+  padding:12px 14px;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  gap:9px;
+  -webkit-box-align:flex-start;-webkit-align-items:flex-start;align-items:flex-start;
+}
+.d-note svg{-webkit-flex-shrink:0;flex-shrink:0;margin-top:2px;color:#d97706;}
+.d-note-body{font-size:12px;color:#92400e;line-height:1.6;font-weight:500;}
+.d-note-body strong{font-weight:700;color:#78350f;}
+
+/* Field group (step 2) */
+.d-field-group{border:1.5px solid var(--br);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
+.d-field-group-hdr{
+  background:var(--sf);padding:8px 14px;border-bottom:1px solid var(--br);
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  font-size:11px;font-weight:700;color:var(--su);
+}
+.d-field-group-tag{font-size:9px;font-weight:700;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:.4px;}
+.d-field-group-tag.required{background:#fee2e2;color:#991b1b;}
+.d-field-group-tag.optional{background:#dbeafe;color:#1e40af;}
+
+.d-field-row{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  gap:12px;padding:12px 14px;border-bottom:1px solid var(--br);
+  cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.d-field-row:last-child{border-bottom:none;}
+.d-field-row.locked{cursor:default;}
+.d-field-chk{
+  width:22px;height:22px;border-radius:6px;border:2px solid var(--br);background:#fff;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+.d-field-chk svg{display:none;}
+.d-field-chk.checked{background:#000;border-color:#000;}
+.d-field-chk.checked svg{display:block;color:#fff;}
+.d-field-chk.locked-chk{background:#000;border-color:#000;opacity:.5;}
+.d-field-chk.locked-chk svg{display:block;color:#fff;}
+.d-field-info{-webkit-box-flex:1;-webkit-flex:1;flex:1;min-width:0;}
+.d-field-name{font-size:13px;font-weight:600;color:var(--fg);}
+.d-field-masked{font-size:11px;color:var(--mu);font-weight:400;}
+.d-field-val{font-size:11px;color:var(--su);margin-top:2px;font-family:monospace;}
+.d-locked-tag{font-size:14px;color:var(--mu);}
+
+/* Review card (step 3) */
+.d-review-card{border:1.5px solid var(--br);border-radius:var(--r);overflow:hidden;margin-bottom:14px;}
+.d-review-hdr{background:var(--sf);padding:9px 14px;font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--br);}
+.d-review-row{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;
+  padding:10px 14px;border-bottom:1px solid var(--br);
+}
+.d-review-k{font-size:12px;color:var(--mu);font-weight:500;}
+.d-review-v{font-size:12px;font-weight:600;color:var(--fg);}
+.d-review-field-row{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  gap:10px;padding:10px 14px;border-bottom:1px solid var(--br);
+  font-size:12px;font-weight:500;color:var(--fg);
+}
+.d-review-field-row:last-child{border-bottom:none;}
+.d-review-chk{
+  width:18px;height:18px;border-radius:4px;background:#dcfce7;border:1px solid #86efac;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  -webkit-flex-shrink:0;flex-shrink:0;
+}
+
+/* Consent block (step 3) */
+.d-consent-block{border:1.5px solid var(--br);border-radius:var(--r);padding:14px;}
+.d-consent-row{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  gap:10px;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+.d-consent-text{font-size:12px;color:var(--su);line-height:1.6;-webkit-box-flex:1;-webkit-flex:1;flex:1;}
+
+
+/* Direct flow QR scanner */
+.d-qr-scanner{
+  background:var(--sf);border-radius:var(--r);
+  padding:20px;text-align:center;margin-bottom:16px;
+}
+.d-qr-inner{
+  width:200px;height:200px;position:relative;
+  border-radius:12px;overflow:hidden;
+  background:#fff;border:1px solid var(--br);
+  margin:0 auto 12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.d-qr-status{
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  gap:6px;font-size:12px;font-weight:600;color:var(--su);
+}
+/* ─────────────────────────────────────────
+   AUTH CHOICE  (step 4)
+───────────────────────────────────────── */
+.auth-choice{
+  display:-webkit-box;
+  display:-webkit-flex;
+  display:flex;
+  gap:10px;
+  margin-bottom:18px;
+}
+.auth-opt{
+  -webkit-box-flex:1;-webkit-flex:1;flex:1;
+  border:2px solid var(--br);
+  border-radius:var(--r);
+  background:#fff;
+  padding:16px 12px 14px;
+  text-align:center;
+  cursor:pointer;
+  position:relative;
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-transition:border-color .15s,background .15s;
+  transition:border-color .15s,background .15s;
+}
+.auth-opt.selected{
+  border-color:#000;
+  border-width:2px;
+  background:var(--sf);
+}
+.auth-opt-icon{
+  width:52px;height:52px;
+  border-radius:14px;
+  background:var(--sf);
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+  margin:0 auto 10px;
+  color:var(--fg);
+  -webkit-transition:background .15s;
+  transition:background .15s;
+}
+.auth-opt.selected .auth-opt-icon{
+  background:#000;
+  color:#fff;
+}
+.auth-opt-label{
+  font-size:13px;font-weight:700;color:var(--fg);margin-bottom:4px;
+}
+.auth-opt-sub{
+  font-size:10px;color:var(--mu);line-height:1.4;font-weight:500;
+}
+.auth-opt-tick{
+  position:absolute;top:8px;right:8px;
+  width:18px;height:18px;border-radius:50%;
+  background:#000;color:#fff;
+  display:-webkit-box;display:-webkit-flex;display:flex;
+  -webkit-box-align:center;-webkit-align-items:center;align-items:center;
+  -webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;
+}
+/* Auth processing */
+.auth-processing{text-align:center;padding:16px 0;}
+@-webkit-keyframes spin{from{-webkit-transform:rotate(0deg)}to{-webkit-transform:rotate(360deg)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.spin-ring{
+  width:48px;height:48px;border-radius:50%;
+  border:3px solid var(--br);border-top-color:#000;
+  -webkit-animation:spin .8s linear infinite;animation:spin .8s linear infinite;
+  margin:0 auto 14px;
+}
+.auth-proc-txt{font-size:14px;font-weight:600;color:var(--fg);}
+.auth-proc-sub{font-size:12px;color:var(--mu);margin-top:4px;}
+
+
 ───────────────────────────────────────── */
 @-webkit-keyframes slideUp{from{opacity:0;-webkit-transform:translateY(12px)}to{opacity:1;-webkit-transform:none}}
 @keyframes slideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -542,13 +790,23 @@ body{
   </div>
 </div>
 
+<!-- DIRECT FLOW STEP BAR -->
+<div class="step-bar-d hide" id="step-bar-d">
+  <div class="si"><div class="sd active" id="dd1">1</div><span class="sn active" id="dn1">QR</span></div>
+  <div class="sc" id="dc1"></div>
+  <div class="si"><div class="sd" id="dd2">2</div><span class="sn" id="dn2">Scan</span></div>
+  <div class="sc" id="dc2"></div>
+  <div class="si"><div class="sd" id="dd3">3</div><span class="sn" id="dn3">Approve</span></div>
+  <div class="sc" id="dc3"></div>
+  <div class="si"><div class="sd" id="dd4">4</div><span class="sn" id="dn4">Auth</span></div>
+</div>
+<div class="prog" id="prog-bar-d" style="display:none;"><div class="pf" id="pf-d"></div></div>
+
 <!-- STEP BAR -->
 <div class="step-bar hide" id="step-bar">
   <div class="si"><div class="sd active" id="sd1">1</div><span class="sn active" id="sn1">Scan QR</span></div>
   <div class="sc" id="sc1"></div>
-  <div class="si"><div class="sd" id="sd2">2</div><span class="sn" id="sn2">OTP</span></div>
-  <div class="sc" id="sc2"></div>
-  <div class="si"><div class="sd" id="sd3">3</div><span class="sn" id="sn3">Result</span></div>
+  <div class="si"><div class="sd" id="sd2">2</div><span class="sn" id="sn2">Result</span></div>
 </div>
 <div class="prog" id="prog-bar" style="display:none;"><div class="pf" id="pf"></div></div>
 
@@ -569,23 +827,41 @@ body{
       <span style="font-size:11px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.5px;">DECENTRO</span>
       <div class="hero-sep"></div>
       <svg width="20" height="14" viewBox="0 0 992 524" xmlns="http://www.w3.org/2000/svg">
-          <path fill="#F9B50F" d="M496 26c7 13 19 20 30 29 14 13 25 28 30 46 1 2 1 4 1 5 1 5 1 5-4 4-38-6-76-6-114 0-5 1-5 1-4-4 5-21 16-38 32-52 4-3 9-7 13-10 8-6 13-11 16-18z"/>
-          <path fill="#F9B50F" d="M258 161c0-17 4-31 9-45 4-9 8-19 8-29 0-1 0-2 2-1 11 6 24 7 36 9 20 4 39 12 53 27 6 6 6 6-2 8-35 14-68 33-97 57-3 3-3 3-5-1-3-9-4-18-4-26z"/>
-          <path fill="#F9B50F" d="M718 86c0 13 6 25 10 36 6 16 9 33 6 50-1 5-2 10-4 15-1 3-2 3-4 1-25-20-52-37-82-50-6-3-13-6-19-8-4-1-3-2-1-5 11-12 25-20 40-25 7-3 15-4 22-5 11-2 21-4 32-9z"/>
-          <path fill="#F9B50F" d="M605 152c2 0 4 1 5 1 114 39 197 134 221 247 4 21 7 43 7 65 0 3-1 4-4 4-19 0-39 0-58 0-3 0-4-1-4-4 1-38-3-76-13-112-16-55-42-103-81-144-20-21-41-39-65-55-1-1-2-1-3-2z"/>
-          <path fill="#F9B50F" d="M55 468c12-7 19-18 28-28 14-16 30-28 51-32 1 0 2 0 2 0 2-1 3 0 2 2-2 10-3 21-4 32-1 8-1 16-1 25 0 2 0 3-3 3-25 0-50 0-75 0z"/>
-          <path fill="#F9B50F" d="M938 468c-25 0-50 0-75 0-3 0-3-1-3-3 0-19-2-37-5-55-1-3 1-3 3-3 16 3 30 11 42 22 6 5 10 10 15 16 7 8 13 16 23 23z"/>
-          <path fill="#F9B50F" d="M156 343c-14-12-23-26-29-43-3-10-5-21-7-31-1-7-3-13-6-20-1-1-1-2 1-2 9 0 18-3 26-7 16-6 31-10 48-10 8 0 16 2 24 4 3 1 4 2 1 5-19 22-34 47-47 73-5 10-9 20-11 31z"/>
-          <path fill="#F9B50F" d="M880 247c-7 12-8 26-10 39-5 21-13 40-29 54-1 1-2 2-4 2-5-13-10-25-16-37-12-24-27-46-43-67-2-2-2-3 1-4 20-7 40-5 60 1 10 3 20 8 31 10 3 1 6 0 10 2z"/>
-          <path fill="#D42736" d="M231 267c15-21 32-39 52-55 36-30 77-52 124-61 72-14 139-3 199 40 42 30 71 71 90 119 13 33 20 67 22 102 1 13 1 26 1 39 0 9-5 15-12 17-7 2-12-1-15-7-3-5-3-11-3-17 0-34-5-67-15-100-12-37-28-71-54-100-29-34-66-55-110-64-29-6-58-7-87-4-34 4-67 14-98 30-32 15-62 35-89 58l-5 4z"/>
-          <path fill="#D42736" d="M282 468c6-7 11-13 17-18 20-23 42-44 67-61 19-12 38-23 60-28 29-7 52 1 71 25 3 4 6 8 9 11 5 4 10 7 16 5 5-1 8-5 8-10 1-6-1-13-4-18-13-29-35-46-67-49-26-3-49 4-72 15-31 15-58 36-83 59-23 21-44 44-62 68-1 1-2 2-4 2H170z"/>
-          <path fill="#D42736" d="M650 444v21c0 3-1 3-3 3H619c-3 0-3-1-3-3 0-18-1-37-3-54-5-39-15-76-39-107-24-31-55-48-93-54-40-6-78 2-114 18-40 17-74 41-106 69-11 10-21 20-34 28-6 3-12 4-15 1-3-3-4-9-2-15 3-7 7-12 12-17 39-44 86-78 140-101 29-12 60-20 91-20 69 0 122 30 161 85 16 23 25 49 30 76 5 22 7 46 7 71z"/>
-          <path fill="#D42736" d="M370 468c14-14 27-27 44-34 4-2 8-3 12-3 13-2 22 5 24 18 1 6 1 11 0 17 0 2-1 2-3 2H425c-1 0-2 0-2-1-1-3-4-4-6-3-2 0-3 0-5 1-5 3-11 3-17 3H370z"/>
-          <path fill="#D42736" d="M167 413c0-2 1-3 1-5 3-10 8-19 15-26 7-7 18-5 21 4 1 3 1 6 0 9-1 2-2 4-3 6-4 6-9 12-15 17-2 1-4 3-6 4-8 4-13 0-13-9z"/>
-        </svg>
+        <path fill="#F9B50F" d="M496 26c7 13 19 20 30 29 14 13 25 28 30 46 1 2 1 4 1 5 1 5 1 5-4 4-38-6-76-6-114 0-5 1-5 1-4-4 5-21 16-38 32-52 4-3 9-7 13-10 8-6 13-11 16-18z"/>
+        <path fill="#F9B50F" d="M258 161c0-17 4-31 9-45 4-9 8-19 8-29 0-1 0-2 2-1 11 6 24 7 36 9 20 4 39 12 53 27 6 6 6 6-2 8-35 14-68 33-97 57-3 3-3 3-5-1-3-9-4-18-4-26z"/>
+        <path fill="#F9B50F" d="M718 86c0 13 6 25 10 36 6 16 9 33 6 50-1 5-2 10-4 15-1 3-2 3-4 1-25-20-52-37-82-50-6-3-13-6-19-8-4-1-3-2-1-5 11-12 25-20 40-25 7-3 15-4 22-5 11-2 21-4 32-9z"/>
+        <path fill="#F9B50F" d="M605 152c2 0 4 1 5 1 114 39 197 134 221 247 4 21 7 43 7 65 0 3-1 4-4 4-19 0-39 0-58 0-3 0-4-1-4-4 1-38-3-76-13-112-16-55-42-103-81-144-20-21-41-39-65-55-1-1-2-1-3-2z"/>
+        <path fill="#F9B50F" d="M55 468c12-7 19-18 28-28 14-16 30-28 51-32 1 0 2 0 2 0 2-1 3 0 2 2-2 10-3 21-4 32-1 8-1 16-1 25 0 2 0 3-3 3-25 0-50 0-75 0z"/>
+        <path fill="#F9B50F" d="M938 468c-25 0-50 0-75 0-3 0-3-1-3-3 0-19-2-37-5-55-1-3 1-3 3-3 16 3 30 11 42 22 6 5 10 10 15 16 7 8 13 16 23 23z"/>
+        <path fill="#F9B50F" d="M156 343c-14-12-23-26-29-43-3-10-5-21-7-31-1-7-3-13-6-20-1-1-1-2 1-2 9 0 18-3 26-7 16-6 31-10 48-10 8 0 16 2 24 4 3 1 4 2 1 5-19 22-34 47-47 73-5 10-9 20-11 31z"/>
+        <path fill="#F9B50F" d="M880 247c-7 12-8 26-10 39-5 21-13 40-29 54-1 1-2 2-4 2-5-13-10-25-16-37-12-24-27-46-43-67-2-2-2-3 1-4 20-7 40-5 60 1 10 3 20 8 31 10 3 1 6 0 10 2z"/>
+        <path fill="#D42736" d="M231 267c15-21 32-39 52-55 36-30 77-52 124-61 72-14 139-3 199 40 42 30 71 71 90 119 13 33 20 67 22 102 1 13 1 26 1 39 0 9-5 15-12 17-7 2-12-1-15-7-3-5-3-11-3-17 0-34-5-67-15-100-12-37-28-71-54-100-29-34-66-55-110-64-29-6-58-7-87-4-34 4-67 14-98 30-32 15-62 35-89 58l-5 4z"/>
+        <path fill="#D42736" d="M282 468c6-7 11-13 17-18 20-23 42-44 67-61 19-12 38-23 60-28 29-7 52 1 71 25 3 4 6 8 9 11 5 4 10 7 16 5 5-1 8-5 8-10 1-6-1-13-4-18-13-29-35-46-67-49-26-3-49 4-72 15-31 15-58 36-83 59-23 21-44 44-62 68-1 1-2 2-4 2H170z"/>
+        <path fill="#D42736" d="M650 444v21c0 3-1 3-3 3H619c-3 0-3-1-3-3 0-18-1-37-3-54-5-39-15-76-39-107-24-31-55-48-93-54-40-6-78 2-114 18-40 17-74 41-106 69-11 10-21 20-34 28-6 3-12 4-15 1-3-3-4-9-2-15 3-7 7-12 12-17 39-44 86-78 140-101 29-12 60-20 91-20 69 0 122 30 161 85 16 23 25 49 30 76 5 22 7 46 7 71z"/>
+        <path fill="#D42736" d="M370 468c14-14 27-27 44-34 4-2 8-3 12-3 13-2 22 5 24 18 1 6 1 11 0 17 0 2-1 2-3 2H425c-1 0-2 0-2-1-1-3-4-4-6-3-2 0-3 0-5 1-5 3-11 3-17 3H370z"/>
+        <path fill="#D42736" d="M167 413c0-2 1-3 1-5 3-10 8-19 15-26 7-7 18-5 21 4 1 3 1 6 0 9-1 2-2 4-3 6-4 6-9 12-15 17-2 1-4 3-6 4-8 4-13 0-13-9z"/>
+      </svg>
       <span>UIDAI OVSE</span>
     </div>
   </div>
+
+  <!-- ── FLOW A: DATA SELECTION ── -->
+  <p class="flow-sec-t">Flow A &mdash; Data Selection</p>
+  <div class="direct-card" onclick="startDirectFlow()" style="margin-bottom:20px;">
+    <div class="direct-card-left">
+      <div class="direct-icon">
+        <svg width="20" height="20" fill="none" stroke="#fff" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="direct-name">Aadhaar Data Selection</div>
+        <div class="direct-desc">4 steps &mdash; Scan &rarr; Review request &rarr; Choose data &rarr; Authenticate</div>
+      </div>
+    </div>
+    <div class="fc-arr"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  </div>
+
+  <!-- ── FLOW B: DIRECT SCAN ── -->
+  <p class="flow-sec-t">Flow B &mdash; Direct Scan</p>
 
   <p class="flow-sec-t">Travel &amp; Access</p>
   <div class="flow-list">
@@ -651,6 +927,7 @@ body{
     </div>
   </div>
 
+
   <div class="hfoot">
     <span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span>
   </div>
@@ -658,14 +935,14 @@ body{
 <div class="home-ind"><div class="home-bar"></div></div>
 </div><!-- /home -->
 
-<!-- ══ SCAN ══ -->
+<!-- ══ SCAN — Direct Scan Flow ══ -->
 <div class="screen" id="sc-scan">
 <div class="sbody">
-  
+
   <div class="flow-pill">
     <div class="flow-pill-in">
       <div class="fp-icon" id="fp-icon"></div>
-      <span class="fp-text" id="fp-text">Theme Park</span>
+      <span class="fp-text" id="fp-text">Airport Entry</span>
     </div>
   </div>
 
@@ -699,74 +976,34 @@ body{
         <div class="sl" id="scan-line"></div>
       </div>
       <div class="scan-state" id="scan-txt">Scanning for Aadhaar QR...</div>
-      <div class="qr-hint">Ask customer to open <strong>mAadhaar</strong> and show offline QR</div>
+      <div class="qr-hint">Customer presents mAadhaar QR &mdash; scan to begin</div>
     </div>
   </div>
 
-  <div class="div-row"><div class="div-line"></div><span class="div-txt">or enter manually</span><div class="div-line"></div></div>
-  <div class="form-g">
-    <label class="form-l">Aadhaar Number</label>
-    <input class="form-i" id="aadhaar-field" type="tel" placeholder="XXXX XXXX XXXX" maxlength="14" oninput="fmtAadhaar(this)">
+  <div class="info-note">
+    <strong>How it works: </strong>Once scanned, the customer approves verification directly in their <strong>Aadhaar app via Face ID or MPIN</strong>. No OTP. No data entry.
   </div>
-  <div class="form-g">
-    <label class="form-l">Reference ID <span style="font-weight:400;color:var(--mu);">(optional)</span></label>
-    <input class="form-i" id="ref-field" type="text" placeholder="Ticket / Booking ID">
-  </div>
+
 </div>
 <div class="sfooter">
-  <!-- State 1: Simulate only -->
   <div id="footer-simulate">
     <button class="btn-p" onclick="simulateScan()">Simulate QR Scan</button>
   </div>
-  <!-- State 2: Consent + OTP (shown after scan) -->
-  <div id="footer-otp" style="display:none;">
+  <div id="footer-consent" style="display:none;">
     <div class="consent-card">
       <div class="c-chk" id="c-chk" onclick="toggleConsent()">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="c-txt">
-        <strong>Customer Consent Obtained</strong>
-        Customer has voluntarily agreed to Aadhaar-based offline verification. DPDP Act 2023 compliant.
+        <strong>Customer Verified via Aadhaar App</strong>
+        Customer approved via Face ID / MPIN in their Aadhaar app. DPDP Act 2023 compliant.
       </div>
     </div>
-    <button class="btn-p" id="proceed-btn" onclick="goToOTP()" disabled>Send OTP to Customer</button>
+    <button class="btn-p" id="proceed-btn" onclick="completeDirectScan()">Complete Verification</button>
   </div>
   <div class="pow-strip"><span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span></div>
 </div>
 </div><!-- /scan -->
-
-<!-- ══ OTP ══ -->
-<div class="screen" id="sc-otp">
-<div class="sbody">
-  
-  <div class="aad-chip">
-    <div class="aad-chip-in">
-      <div class="aci"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2.5"/></svg></div>
-      <span class="acn" id="chip-num">XXXX XXXX 8031</span>
-    </div>
-  </div>
-  <div class="otp-ttl">Enter OTP</div>
-  <div class="otp-sub">6-digit code sent to the mobile registered with UIDAI for this Aadhaar.</div>
-  <div class="otp-row">
-    <input class="otp-box" type="tel" maxlength="1" oninput="otpIn(this,0)" onkeydown="otpKey(event,0)">
-    <input class="otp-box" type="tel" maxlength="1" oninput="otpIn(this,1)" onkeydown="otpKey(event,1)">
-    <input class="otp-box" type="tel" maxlength="1" oninput="otpIn(this,2)" onkeydown="otpKey(event,2)">
-    <input class="otp-box" type="tel" maxlength="1" oninput="otpIn(this,3)" onkeydown="otpKey(event,3)">
-    <input class="otp-box" type="tel" maxlength="1" oninput="otpIn(this,4)" onkeydown="otpKey(event,4)">
-    <input class="otp-box" type="tel" maxlength="1" oninput="otpIn(this,5)" onkeydown="otpKey(event,5)">
-  </div>
-  <div class="otp-meta">Expires in <span class="tt" id="otp-timer">09:59</span> &nbsp;&middot;&nbsp; <span class="resend" onclick="resetTimer()">Resend OTP</span></div>
-  <div class="info-note">&#128274; Verification is fully offline. No biometric data is transmitted. Compliant with UIDAI OVSE mandate.</div>
-  <div class="vp" id="vp-wrap" style="display:none;">
-    <div class="vp-lbl"><span>Verifying with UIDAI...</span><span id="vp-pct">0%</span></div>
-    <div class="vp-track"><div class="vp-fill" id="vp-fill"></div></div>
-  </div>
-</div>
-<div class="sfooter">
-  <button class="btn-p" id="verify-btn" onclick="verifyOTP()">Verify Identity</button>
-  <div class="pow-strip"><span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span></div>
-</div>
-</div><!-- /otp -->
 
 <!-- ══ RESULT ══ -->
 <div class="screen" id="sc-result">
@@ -799,9 +1036,291 @@ body{
 <div class="home-ind"><div class="home-bar"></div></div>
 </div><!-- /result -->
 
+
+<!-- ══ DIRECT: STEP 1 — Scan QR Code ══ -->
+<div class="screen" id="sc-d1">
+<div class="sbody">
+
+  <div class="d-section-title" style="margin-bottom:4px;">Scan QR Code</div>
+  <p class="d-body-text" style="margin-bottom:18px;">Point your camera at the QR code shown by the service provider to begin verification.</p>
+
+  <!-- Animated QR scanner frame -->
+  <div class="d-qr-scanner">
+    <div class="d-qr-inner">
+      <div class="qr-c"><span></span></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;padding:26px;opacity:.1;" viewBox="0 0 100 100">
+        <rect x="10" y="10" width="30" height="30" rx="3" fill="none" stroke="#000" stroke-width="5"/>
+        <rect x="60" y="10" width="30" height="30" rx="3" fill="none" stroke="#000" stroke-width="5"/>
+        <rect x="10" y="60" width="30" height="30" rx="3" fill="none" stroke="#000" stroke-width="5"/>
+        <rect x="16" y="16" width="18" height="18" fill="#000"/>
+        <rect x="66" y="16" width="18" height="18" fill="#000"/>
+        <rect x="16" y="66" width="18" height="18" fill="#000"/>
+        <rect x="60" y="60" width="5" height="5" fill="#000"/><rect x="68" y="60" width="5" height="5" fill="#000"/>
+        <rect x="76" y="60" width="14" height="5" fill="#000"/><rect x="60" y="68" width="14" height="5" fill="#000"/>
+        <rect x="60" y="76" width="5" height="14" fill="#000"/><rect x="68" y="76" width="5" height="5" fill="#000"/>
+        <rect x="76" y="76" width="14" height="5" fill="#000"/>
+      </svg>
+      <div class="sl" id="d1-scan-line"></div>
+    </div>
+    <div class="d-qr-status">
+      <span class="live-dot"></span>
+      <span id="d1-scan-status">Scanning for QR code...</span>
+    </div>
+  </div>
+
+  <div class="d-note" style="margin-bottom:0;">
+    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/></svg>
+    <span class="d-note-body">Only scan QR codes from <strong>UIDAI-certified</strong> service providers. Never share your Aadhaar number verbally.</span>
+  </div>
+
+</div>
+<div class="sfooter">
+  <button class="btn-p" onclick="simulateD1Scan()">Simulate QR Scan</button>
+  <div class="pow-strip"><span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span></div>
+</div>
+</div><!-- /d1 -->
+
+<!-- ══ DIRECT: STEP 2 — Verification Request ══ -->
+<div class="screen" id="sc-d2">
+<div class="sbody">
+
+  <!-- Requesting party card -->
+  <div class="d-requester">
+    <div class="d-requester-logo">
+      <svg width="22" height="22" fill="none" stroke="#fff" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="d-requester-info">
+      <div class="d-requester-name">Decentro Technologies</div>
+      <div class="d-requester-tag">UIDAI OVSE Certified &bull; Verified Requestor</div>
+    </div>
+    <div class="d-verified-badge">
+      <svg width="14" height="14" fill="none" stroke="#166534" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-width="2"/></svg>
+    </div>
+  </div>
+
+  <div class="d-section-title">Verification Request</div>
+  <p class="d-body-text">Decentro is requesting access to your Aadhaar data to verify your identity. Your data will be shared securely via UIDAI&#8217;s Offline Verification System.</p>
+
+  <!-- What they want -->
+  <div class="d-info-card">
+    <div class="d-info-row">
+      <div class="d-info-icon">
+        <svg width="14" height="14" fill="none" stroke="var(--su)" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-width="2"/></svg>
+      </div>
+      <div>
+        <div class="d-info-k">Purpose</div>
+        <div class="d-info-v">Identity Verification (KYC)</div>
+      </div>
+    </div>
+    <div class="d-info-row">
+      <div class="d-info-icon">
+        <svg width="14" height="14" fill="none" stroke="var(--su)" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/></svg>
+      </div>
+      <div>
+        <div class="d-info-k">Data Retention</div>
+        <div class="d-info-v">Not stored &bull; One-time use only</div>
+      </div>
+    </div>
+    <div class="d-info-row" style="border-bottom:none;">
+      <div class="d-info-icon">
+        <svg width="14" height="14" fill="none" stroke="var(--su)" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-width="2"/></svg>
+      </div>
+      <div>
+        <div class="d-info-k">Standard</div>
+        <div class="d-info-v">UIDAI OVSE &bull; DPDP Act 2023 Compliant</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-note">
+    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/></svg>
+    <span class="d-note-body">Your Aadhaar biometrics will <strong>never</strong> be shared. Only the digitally signed offline XML is transmitted.</span>
+  </div>
+
+</div>
+<div class="sfooter">
+  <button class="btn-p" onclick="showSc('d3')">Review &amp; Choose Data &rarr;</button>
+  <button class="btn-s" onclick="showSc('home')">Decline</button>
+  <div class="pow-strip"><span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span></div>
+</div>
+</div><!-- /d2 -->
+
+<!-- ══ DIRECT: STEP 3 — Select Data to Share ══ -->
+<div class="screen" id="sc-d3">
+<div class="sbody">
+
+  <div class="d-section-title" style="margin-bottom:4px;">Select Data to Share</div>
+  <p class="d-body-text" style="margin-bottom:16px;">Required fields are mandatory for verification. You may opt out of optional fields.</p>
+
+  <!-- Required fields group -->
+  <div class="d-field-group">
+    <div class="d-field-group-hdr">
+      <span>Required</span>
+      <span class="d-field-group-tag required">Mandatory</span>
+    </div>
+    <div class="d-field-row locked" onclick="void(0)">
+      <div class="d-field-chk checked locked-chk">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">Aadhaar Number <span class="d-field-masked">(masked)</span></div>
+        <div class="d-field-val">XXXX XXXX 8031</div>
+      </div>
+      <span class="d-locked-tag">&#128274;</span>
+    </div>
+    <div class="d-field-row locked">
+      <div class="d-field-chk checked locked-chk">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">Full Name <span class="d-field-masked">(partial)</span></div>
+        <div class="d-field-val">R**** S****</div>
+      </div>
+      <span class="d-locked-tag">&#128274;</span>
+    </div>
+    <div class="d-field-row locked">
+      <div class="d-field-chk checked locked-chk">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">Date of Birth</div>
+        <div class="d-field-val">**/**/1990</div>
+      </div>
+      <span class="d-locked-tag">&#128274;</span>
+    </div>
+  </div>
+
+  <!-- Optional fields group -->
+  <div class="d-field-group">
+    <div class="d-field-group-hdr">
+      <span>Optional</span>
+      <span class="d-field-group-tag optional">Your choice</span>
+    </div>
+    <div class="d-field-row" id="dfield-gender" onclick="toggleDField('dfield-gender')">
+      <div class="d-field-chk checked" id="dchk-gender">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">Gender</div>
+        <div class="d-field-val">M</div>
+      </div>
+    </div>
+    <div class="d-field-row" id="dfield-address" onclick="toggleDField('dfield-address')">
+      <div class="d-field-chk checked" id="dchk-address">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">State &amp; Pincode</div>
+        <div class="d-field-val">Maharashtra &bull; 400***</div>
+      </div>
+    </div>
+    <div class="d-field-row" id="dfield-photo" onclick="toggleDField('dfield-photo')">
+      <div class="d-field-chk" id="dchk-photo">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">Profile Photo</div>
+        <div class="d-field-val" style="color:var(--mu);">Not shared by default</div>
+      </div>
+    </div>
+    <div class="d-field-row" style="border-bottom:none;" id="dfield-mobile" onclick="toggleDField('dfield-mobile')">
+      <div class="d-field-chk" id="dchk-mobile">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="d-field-info">
+        <div class="d-field-name">Mobile (last 2 digits)</div>
+        <div class="d-field-val" style="color:var(--mu);">Not shared by default</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+  <!-- Consent declaration -->
+  <div class="d-consent-block" style="margin-top:4px;">
+    <div class="d-consent-row" id="d3-consent-row" onclick="toggleD3Consent()">
+      <div class="d-field-chk" id="d3-chk">
+        <svg width="11" height="11" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </div>
+      <p class="d-consent-text">I voluntarily consent to share the selected data with Decentro for identity verification. One-time, read-only share under DPDP Act 2023.</p>
+    </div>
+  </div>
+
+<div class="sfooter">
+  <button class="btn-p" id="d3-approve-btn" onclick="showSc('d4')" disabled>Continue &rarr;</button>
+  <div class="pow-strip"><span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span></div>
+</div>
+</div><!-- /d3 -->
+
+<!-- ══ DIRECT: STEP 4 — Authenticate ══ -->
+<div class="screen" id="sc-d4">
+<div class="sbody">
+
+  <div class="d-section-title" style="margin-bottom:4px;">Authenticate</div>
+  <p class="d-body-text" style="margin-bottom:20px;">One last step. Confirm it&#8217;s you to complete the verification.</p>
+
+  <div class="auth-choice" id="auth-choice">
+    <div class="auth-opt selected" id="auth-face" onclick="selectAuth('face')">
+      <div class="auth-opt-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="12" cy="12" r="2.5" stroke-width="1.5"/>
+          <path d="M7 9.5C7 9.5 8.5 8 12 8s5 1.5 5 1.5" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M7 14.5C7 14.5 8.5 16 12 16s5-1.5 5-1.5" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="auth-opt-label">Face ID</div>
+      <div class="auth-opt-sub">Biometric via<br>Aadhaar app</div>
+      <div class="auth-opt-tick" id="auth-face-tick">
+        <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+    <div class="auth-opt" id="auth-tap" onclick="selectAuth('tap')">
+      <div class="auth-opt-icon">
+        <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M7 11.5V14a5 5 0 0010 0v-2.5" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M12 2v7" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9 4.5l3-2.5 3 2.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 11.5a5 5 0 0110 0" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="auth-opt-label">Tap Confirm</div>
+      <div class="auth-opt-sub">One-tap approval<br>in Aadhaar app</div>
+      <div class="auth-opt-tick" id="auth-tap-tick" style="display:none;">
+        <svg width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:var(--sf);border-radius:var(--r);padding:13px 14px;margin-bottom:4px;">
+    <div style="font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;">Session Details</div>
+    <div class="approve-data-row" style="padding:7px 0;">
+      <span class="approve-data-k">Aadhaar</span>
+      <span class="approve-data-v" style="font-family:monospace;">XXXX XXXX 8031</span>
+    </div>
+    <div class="approve-data-row" style="padding:7px 0;border-bottom:none;">
+      <span class="approve-data-k">Session ID</span>
+      <span class="approve-data-v" style="font-family:monospace;font-size:11px;" id="d4-session">DEC-####-####</span>
+    </div>
+  </div>
+
+  <div class="auth-processing" id="auth-processing" style="display:none;">
+    <div class="spin-ring"></div>
+    <div class="auth-proc-txt" id="auth-proc-txt">Authenticating...</div>
+    <div class="auth-proc-sub">Please wait while we verify</div>
+  </div>
+
+</div>
+<div class="sfooter" id="d4-footer">
+  <button class="btn-p" id="d4-auth-btn" onclick="runAuth()">Authenticate Now</button>
+  <div class="pow-strip"><span>Powered by <strong style="color:var(--fg);">DECENTRO</strong> &nbsp;|&nbsp; UIDAI OVSE Certified</span></div>
+</div>
+</div><!-- /d4 -->
+
+
 </div><!-- /phone -->
 
 <script>
+// - STATE -
 var FLOWS = {
   airport:    {name:"Airport Entry"},
   gated:      {name:"Gated Community"},
@@ -813,93 +1332,75 @@ var FLOWS = {
   cowork:     {name:"Co-working Space"},
   healthcare: {name:"Healthcare / Clinic"}
 };
-var flow = "themepark";
-var consent = false;
-var scanned = "";
-var timerRef = null;
-var timerSec = 599;
+var flow         = "airport";
+var consent      = false;
+var scanned      = "";
+var selectedAuth = "face";
+var dFieldState  = {gender:true, address:true, photo:false, mobile:false};
+var d3Consented  = false;
 
+// - NAVIGATION -
 function showSc(id) {
   var screens = document.querySelectorAll(".screen");
-  for (var i = 0; i < screens.length; i++) {
-    screens[i].classList.remove("active");
-  }
-  document.getElementById("sc-" + id).classList.add("active");
+  for (var i = 0; i < screens.length; i++) screens[i].classList.remove("active");
+  var target = document.getElementById("sc-" + id);
+  if (!target) return;
+  target.classList.add("active");
 
   var sb  = document.getElementById("step-bar");
   var pb  = document.getElementById("prog-bar");
+  var sbd = document.getElementById("step-bar-d");
+  var pbd = document.getElementById("prog-bar-d");
   var tb  = document.getElementById("global-topbar");
   var tbb = document.getElementById("topbar-back-btn");
 
+  if (sb)  sb.className  = "step-bar hide";
+  if (sbd) sbd.className = "step-bar-d hide";
+  if (pb)  pb.style.display  = "none";
+  if (pbd) pbd.style.display = "none";
+
   if (id === "home") {
-    tb.className = "topbar hide";
-    sb.className = "step-bar hide";
-    pb.style.display = "none";
+    if (tb) tb.className = "topbar hide";
+
+  // - Direct Scan Flow (Flow B) -
   } else if (id === "scan") {
-    tb.className = "topbar";
-    tbb.style.display = "flex";
-    sb.className = "step-bar";
-    pb.style.display = "block";
+    if (tb)  tb.className = "topbar";
+    if (tbb) tbb.style.display = "flex";
+    if (sb)  sb.className = "step-bar";
+    if (pb)  pb.style.display = "block";
     setStepUI(1);
-  } else if (id === "otp") {
-    tb.className = "topbar";
-    tbb.style.display = "flex";
-    sb.className = "step-bar";
-    pb.style.display = "block";
-    setStepUI(2);
+
   } else if (id === "result") {
-    tb.className = "topbar";
-    tbb.style.display = "none";
-    sb.className = "step-bar hide";
-    pb.style.display = "none";
+    if (tb)  tb.className = "topbar";
+    if (tbb) tbb.style.display = "none";
+
+  // - Data Selection Flow (Flow A) -
+  } else if (id === "d1") {
+    if (tb)  tb.className = "topbar";
+    if (tbb) tbb.style.display = "flex";
+    if (sbd) sbd.className = "step-bar-d";
+    if (pbd) pbd.style.display = "block";
+    setStepD(1);
+  } else if (id === "d2") {
+    if (tb)  tb.className = "topbar";
+    if (tbb) tbb.style.display = "flex";
+    if (sbd) sbd.className = "step-bar-d";
+    if (pbd) pbd.style.display = "block";
+    setStepD(2);
+  } else if (id === "d3") {
+    if (tb)  tb.className = "topbar";
+    if (tbb) tbb.style.display = "flex";
+    if (sbd) sbd.className = "step-bar-d";
+    if (pbd) pbd.style.display = "block";
+    setStepD(3);
+  } else if (id === "d4") {
+    if (tb)  tb.className = "topbar";
+    if (tbb) tbb.style.display = "flex";
+    if (sbd) sbd.className = "step-bar-d";
+    if (pbd) pbd.style.display = "block";
+    setStepD(4);
   }
   window.scrollTo(0, 0);
-}
-
-function setStepUI(n) {
-  var dots = ["sd1","sd2","sd3"];
-  var names = ["sn1","sn2","sn3"];
-  var conns = ["sc1","sc2"];
-  for (var i = 0; i < dots.length; i++) {
-    var d = document.getElementById(dots[i]);
-    d.classList.remove("active","done");
-    if (i + 1 < n) { d.classList.add("done"); d.textContent = "v"; }
-    else if (i + 1 === n) { d.classList.add("active"); d.textContent = i + 1; }
-    else { d.textContent = i + 1; }
-    document.getElementById(names[i]).className = "sn" + (i + 1 === n ? " active" : "");
-  }
-  for (var j = 0; j < conns.length; j++) {
-    var c = document.getElementById(conns[j]);
-    c.className = "sc" + (j + 1 < n ? " done" : "");
-  }
-  var widths = {1:"33%", 2:"66%", 3:"100%"};
-  document.getElementById("pf").style.width = widths[n];
-}
-
-function startFlow(f) {
-  flow = f;
-  consent = false;
-  scanned = "";
-  var chk = document.getElementById("c-chk");
-  if (chk) chk.className = "c-chk";
-  var pb = document.getElementById("proceed-btn");
-  if (pb) pb.disabled = true;
-  document.getElementById("aadhaar-field").value = "";
-  document.getElementById("ref-field").value = "";
-  document.getElementById("scan-txt").textContent = "Scanning for Aadhaar QR...";
-  var sl = document.getElementById("scan-line");
-  sl.style.webkitAnimationPlayState = "running";
-  sl.style.animationPlayState = "running";
-  sl.style.opacity = "1";
-  // Set pill icon from data attribute
-  var card = document.querySelector("[data-flow='" + f + "']");
-  var icon = card ? card.getAttribute("data-icon") : "";
-  document.getElementById("fp-icon").textContent = icon;
-  document.getElementById("fp-text").textContent = FLOWS[f].name;
-  // Reset footer state
-  document.getElementById("footer-simulate").style.display = "block";
-  document.getElementById("footer-otp").style.display = "none";
-  showSc("scan");
 }
 
 function goHome() { showSc("home"); }
@@ -908,160 +1409,244 @@ function goBack() {
   var active = document.querySelector(".screen.active");
   if (!active) return;
   var id = active.id;
-  if (id === "sc-scan") {
-    showSc("home");
-  } else if (id === "sc-otp") {
-    document.getElementById("footer-simulate").style.display = "none";
-    document.getElementById("footer-otp").style.display = "block";
-    showSc("scan");
+  if      (id === "sc-scan") { showSc("home"); }
+  else if (id === "sc-d1")   { showSc("home"); }
+  else if (id === "sc-d2")   { showSc("d1");   }
+  else if (id === "sc-d3")   { showSc("d2");   }
+  else if (id === "sc-d4")   { showSc("d3");   }
+}
+
+// - STEP INDICATORS -
+function setStepUI(n) {
+  var dots  = ["sd1","sd2"];
+  var names = ["sn1","sn2"];
+  for (var i = 0; i < dots.length; i++) {
+    var d  = document.getElementById(dots[i]);
+    var nm = document.getElementById(names[i]);
+    if (!d || !nm) continue;
+    d.classList.remove("active","done");
+    if      (i+1 < n)  { d.classList.add("done");   d.textContent = "v"; }
+    else if (i+1 === n) { d.classList.add("active"); d.textContent = i+1; }
+    else                { d.textContent = i+1; }
+    nm.className = "sn" + (i+1 === n ? " active" : "");
   }
+  var c  = document.getElementById("sc1");
+  var pf = document.getElementById("pf");
+  if (c)  c.className    = "sc" + (n > 1 ? " done" : "");
+  if (pf) pf.style.width = n === 1 ? "50%" : "100%";
+}
+
+function setStepD(n) {
+  var dots  = ["dd1","dd2","dd3","dd4"];
+  var names = ["dn1","dn2","dn3","dn4"];
+  var conns = ["dc1","dc2","dc3"];
+  for (var i = 0; i < dots.length; i++) {
+    var d  = document.getElementById(dots[i]);
+    var nm = document.getElementById(names[i]);
+    if (!d || !nm) continue;
+    d.classList.remove("active","done");
+    if      (i+1 < n)  { d.classList.add("done");   d.textContent = "v"; }
+    else if (i+1 === n) { d.classList.add("active"); d.textContent = i+1; }
+    else                { d.textContent = i+1; }
+    nm.className = "sn" + (i+1 === n ? " active" : "");
+  }
+  for (var j = 0; j < conns.length; j++) {
+    var c = document.getElementById(conns[j]);
+    if (c) c.className = "sc" + (j+1 < n ? " done" : "");
+  }
+  var pfd = document.getElementById("pf-d");
+  if (pfd) pfd.style.width = {1:"25%",2:"50%",3:"75%",4:"100%"}[n] || "25%";
+}
+
+// - FLOW B: DIRECT SCAN -
+function startFlow(f) {
+  flow    = f;
+  consent = false;
+  scanned = "";
+  // Reset UI
+  var chk = document.getElementById("c-chk");
+  if (chk) chk.className = "c-chk";
+  var pb = document.getElementById("proceed-btn");
+  if (pb) pb.disabled = true;
+  var txt = document.getElementById("scan-txt");
+  if (txt) txt.textContent = "Scanning for Aadhaar QR...";
+  var sl = document.getElementById("scan-line");
+  if (sl) { sl.style.webkitAnimationPlayState = "running"; sl.style.animationPlayState = "running"; sl.style.opacity = "1"; }
+  // Set flow pill
+  var card = document.querySelector("[data-flow='" + f + "']");
+  var icon = card ? card.getAttribute("data-icon") : "";
+  var fpIcon = document.getElementById("fp-icon");
+  var fpText = document.getElementById("fp-text");
+  if (fpIcon) fpIcon.textContent = icon;
+  if (fpText) fpText.textContent = FLOWS[f].name;
+  // Reset footer
+  var fs = document.getElementById("footer-simulate");
+  var fc = document.getElementById("footer-consent");
+  if (fs) fs.style.display = "block";
+  if (fc) fc.style.display = "none";
+  showSc("scan");
+}
+
+function simulateScan() {
+  var btn = document.querySelector("#footer-simulate .btn-p");
+  if (btn) { btn.textContent = "Scanning..."; btn.disabled = true; }
+  setTimeout(function() {
+    scanned = "123456788031";
+    var sl = document.getElementById("scan-line");
+    if (sl) { sl.style.webkitAnimationPlayState = "paused"; sl.style.animationPlayState = "paused"; sl.style.opacity = "0"; }
+    var txt = document.getElementById("scan-txt");
+    if (txt) txt.textContent = "QR scanned - awaiting customer approval";
+    var fs = document.getElementById("footer-simulate");
+    var fc = document.getElementById("footer-consent");
+    if (fs) fs.style.display = "none";
+    if (fc) fc.style.display = "block";
+    consent = false;
+    var chk = document.getElementById("c-chk");
+    if (chk) chk.className = "c-chk";
+    var pb = document.getElementById("proceed-btn");
+    if (pb) pb.disabled = true;
+  }, 1100);
 }
 
 function toggleConsent() {
   consent = !consent;
-  var c = document.getElementById("c-chk");
-  c.className = "c-chk" + (consent ? " on" : "");
-  chkBtn();
+  var chk = document.getElementById("c-chk");
+  var pb  = document.getElementById("proceed-btn");
+  if (chk) chk.className = "c-chk" + (consent ? " on" : "");
+  if (pb)  pb.disabled = !consent;
 }
 
-function chkBtn() {
-  var field = document.getElementById("aadhaar-field").value.replace(/\s/g,"");
-  var has = field.length === 12 || !!scanned;
-  document.getElementById("proceed-btn").disabled = !(consent && has);
+function completeDirectScan() {
+  var now = new Date();
+  var rt = document.getElementById("rr-time");
+  var ti = document.getElementById("txn-id");
+  var ru = document.getElementById("rr-uc");
+  var rm = document.getElementById("rr-method");
+  if (rt) rt.textContent = now.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit",second:"2-digit"}) + " IST";
+  if (ti) ti.textContent = "DEC-OVSE-" + Math.random().toString(36).slice(2,9).toUpperCase();
+  if (ru) ru.textContent = flow ? FLOWS[flow].name : "OVSE";
+  if (rm) rm.textContent = "OVSE - Direct Scan";
+  showSc("result");
 }
-
-function fmtAadhaar(el) {
-  var v = el.value.replace(/\D/g,"").slice(0,12);
-  el.value = v.replace(/(\d{4})(?=\d)/g,"$1 ").trim();
-  chkBtn();
-}
-
-function simulateScan() {
-  var t = document.getElementById("scan-txt");
-  t.textContent = "QR Detected - parsing...";
-  setTimeout(function() {
-    scanned = "123456788031";
-    document.getElementById("aadhaar-field").value = "1234 5678 8031";
-    t.textContent = "QR scanned successfully";
-    var sl = document.getElementById("scan-line");
-    sl.style.webkitAnimationPlayState = "paused";
-    sl.style.animationPlayState = "paused";
-    sl.style.opacity = "0";
-    document.getElementById("footer-simulate").style.display = "none";
-    document.getElementById("footer-otp").style.display = "block";
-    chkBtn();
-  }, 1100);
-}
-
-function goToOTP() {
-  var raw = document.getElementById("aadhaar-field").value.replace(/\s/g,"");
-  var masked = "XXXX XXXX " + raw.slice(8);
-  document.getElementById("chip-num").textContent = masked;
-  document.getElementById("rr-aadhaar").textContent = masked;
-  var boxes = document.querySelectorAll(".otp-box");
-  for (var i = 0; i < boxes.length; i++) {
-    boxes[i].value = "";
-    boxes[i].className = "otp-box";
-  }
-  document.getElementById("vp-wrap").style.display = "none";
-  document.getElementById("vp-fill").style.width = "0%";
-  document.getElementById("verify-btn").disabled = false;
-  startTimer();
-  showSc("otp");
-  setTimeout(function() {
-    var first = document.querySelector(".otp-box");
-    if (first) first.focus();
-  }, 350);
-}
-
-function otpIn(el, i) {
-  el.value = el.value.replace(/\D/g,"");
-  var boxes = document.querySelectorAll(".otp-box");
-  for (var j = 0; j < boxes.length; j++) boxes[j].classList.remove("err");
-  if (el.value) {
-    el.classList.add("filled");
-    if (i < 5) boxes[i + 1].focus();
-  } else {
-    el.classList.remove("filled");
-  }
-}
-
-function otpKey(e, i) {
-  if (e.key === "Backspace") {
-    var boxes = document.querySelectorAll(".otp-box");
-    if (!boxes[i].value && i > 0) boxes[i - 1].focus();
-  }
-}
-
-function verifyOTP() {
-  var boxes = document.querySelectorAll(".otp-box");
-  var otp = "";
-  for (var i = 0; i < boxes.length; i++) otp += boxes[i].value;
-  if (otp.length < 6) {
-    for (var j = 0; j < boxes.length; j++) boxes[j].classList.add("err");
-    return;
-  }
-  document.getElementById("vp-wrap").style.display = "block";
-  document.getElementById("verify-btn").disabled = true;
-  var fill = document.getElementById("vp-fill");
-  var pct = document.getElementById("vp-pct");
-  var p = 0;
-  var iv = setInterval(function() {
-    p += Math.random() * 20;
-    if (p >= 100) { p = 100; clearInterval(iv); }
-    fill.style.width = p + "%";
-    pct.textContent = Math.round(p) + "%";
-  }, 140);
-  setTimeout(function() {
-    clearInterval(iv);
-    if (timerRef) clearInterval(timerRef);
-    var now = new Date();
-    document.getElementById("rr-time").textContent =
-      now.toLocaleTimeString("en-IN", {hour:"2-digit",minute:"2-digit",second:"2-digit"}) + " IST";
-    document.getElementById("txn-id").textContent =
-      "DEC-OVSE-" + Math.random().toString(36).slice(2,9).toUpperCase();
-    document.getElementById("rr-uc").textContent = FLOWS[flow].name;
-    showSc("result");
-  }, 2400);
-}
-
-function startTimer() {
-  timerSec = 599;
-  updTimer();
-  if (timerRef) clearInterval(timerRef);
-  timerRef = setInterval(function() {
-    timerSec--;
-    if (timerSec <= 0) clearInterval(timerRef);
-    updTimer();
-  }, 1000);
-}
-
-function updTimer() {
-  var m = String(Math.floor(timerSec / 60)).padStart ? 
-    String(Math.floor(timerSec / 60)).padStart(2,"0") : 
-    ("0" + Math.floor(timerSec / 60)).slice(-2);
-  var s = String(timerSec % 60).padStart ?
-    String(timerSec % 60).padStart(2,"0") :
-    ("0" + timerSec % 60).slice(-2);
-  document.getElementById("otp-timer").textContent = m + ":" + s;
-}
-
-function resetTimer() { startTimer(); }
 
 function startNew() { startFlow(flow); }
 
 function copyTxn() {
   var txt = document.getElementById("txn-id").textContent;
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(txt);
-    }
-  } catch(e) {}
+  try { if (navigator.clipboard) navigator.clipboard.writeText(txt); } catch(e) {}
   var b = document.querySelector(".cp-btn");
+  if (!b) return;
   b.innerHTML = '<svg fill="none" stroke="#166534" viewBox="0 0 24 24" width="14" height="14"><path d="M5 13l4 4L19 7" stroke-width="2.5" stroke-linecap="round"/></svg>';
   setTimeout(function() {
     b.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke-width="2"/></svg>';
   }, 1500);
+}
+
+// - FLOW A: DATA SELECTION -
+function startDirectFlow() {
+  dFieldState = {gender:true, address:true, photo:false, mobile:false};
+  var fields = ["gender","address","photo","mobile"];
+  for (var i = 0; i < fields.length; i++) {
+    var chk = document.getElementById("dchk-" + fields[i]);
+    if (chk) chk.className = "d-field-chk" + (dFieldState[fields[i]] ? " checked" : "");
+  }
+  var gRow = document.getElementById("review-gender-row");
+  var aRow = document.getElementById("review-address-row");
+  if (gRow) gRow.style.display = "";
+  if (aRow) aRow.style.display = "";
+  d3Consented = false;
+  var d3chk = document.getElementById("d3-chk");
+  var d3btn = document.getElementById("d3-approve-btn");
+  if (d3chk) d3chk.className = "d-field-chk";
+  if (d3btn) d3btn.disabled = true;
+  selectedAuth = "face";
+  var fb  = document.getElementById("auth-face");
+  var tb2 = document.getElementById("auth-tap");
+  var ft  = document.getElementById("auth-face-tick");
+  var tt  = document.getElementById("auth-tap-tick");
+  if (fb)  fb.className  = "auth-opt selected";
+  if (tb2) tb2.className = "auth-opt";
+  if (ft)  ft.style.display = "flex";
+  if (tt)  tt.style.display = "none";
+  var ap = document.getElementById("auth-processing");
+  var ac = document.getElementById("auth-choice");
+  var df = document.getElementById("d4-footer");
+  var db = document.getElementById("d4-auth-btn");
+  if (ap) ap.style.display = "none";
+  if (ac) { ac.style.display = "-webkit-box"; ac.style.display = "flex"; }
+  if (df) df.style.display = "block";
+  if (db) { db.textContent = "Authenticate Now"; db.disabled = false; }
+  var sid = "DEC-" + Math.random().toString(36).slice(2,6).toUpperCase() +
+            "-"    + Math.random().toString(36).slice(2,6).toUpperCase();
+  var el = document.getElementById("d4-session");
+  if (el) el.textContent = sid;
+  showSc("d1");
+}
+
+function simulateD1Scan() {
+  var status = document.getElementById("d1-scan-status");
+  var sl     = document.getElementById("d1-scan-line");
+  if (status) status.textContent = "QR Detected...";
+  setTimeout(function() {
+    if (status) status.textContent = "QR scanned successfully";
+    if (sl) { sl.style.webkitAnimationPlayState = "paused"; sl.style.animationPlayState = "paused"; sl.style.opacity = "0"; }
+    setTimeout(function() { showSc("d2"); }, 600);
+  }, 1200);
+}
+
+function toggleDField(rowId) {
+  var key = rowId.replace("dfield-","");
+  if (!dFieldState.hasOwnProperty(key)) return;
+  dFieldState[key] = !dFieldState[key];
+  var chk = document.getElementById("dchk-" + key);
+  if (chk) chk.className = "d-field-chk" + (dFieldState[key] ? " checked" : "");
+  var gRow = document.getElementById("review-gender-row");
+  var aRow = document.getElementById("review-address-row");
+  if (gRow) gRow.style.display = dFieldState.gender  ? "" : "none";
+  if (aRow) aRow.style.display = dFieldState.address ? "" : "none";
+}
+
+function toggleD3Consent() {
+  d3Consented = !d3Consented;
+  var chk = document.getElementById("d3-chk");
+  var btn = document.getElementById("d3-approve-btn");
+  if (chk) chk.className = "d-field-chk" + (d3Consented ? " checked" : "");
+  if (btn) btn.disabled  = !d3Consented;
+}
+
+function selectAuth(type) {
+  selectedAuth = type;
+  var fb  = document.getElementById("auth-face");
+  var tb2 = document.getElementById("auth-tap");
+  var ft  = document.getElementById("auth-face-tick");
+  var tt  = document.getElementById("auth-tap-tick");
+  if (fb)  fb.className  = "auth-opt" + (type === "face" ? " selected" : "");
+  if (tb2) tb2.className = "auth-opt" + (type === "tap"  ? " selected" : "");
+  if (ft)  ft.style.display = type === "face" ? "flex" : "none";
+  if (tt)  tt.style.display = type === "tap"  ? "flex" : "none";
+}
+
+function runAuth() {
+  var ap = document.getElementById("auth-processing");
+  var ac = document.getElementById("auth-choice");
+  var df = document.getElementById("d4-footer");
+  var pt = document.getElementById("auth-proc-txt");
+  if (ap) ap.style.display = "block";
+  if (ac) ac.style.display = "none";
+  if (df) df.style.display = "none";
+  if (pt) pt.textContent = selectedAuth === "face" ? "Scanning Face..." : "Waiting for confirmation...";
+  setTimeout(function() {
+    var now = new Date();
+    var rt = document.getElementById("rr-time");
+    var ti = document.getElementById("txn-id");
+    var ru = document.getElementById("rr-uc");
+    var rm = document.getElementById("rr-method");
+    if (rt) rt.textContent = now.toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit",second:"2-digit"}) + " IST";
+    if (ti) ti.textContent = "DEC-OVSE-" + Math.random().toString(36).slice(2,9).toUpperCase();
+    if (ru) ru.textContent = "Data Selection Flow";
+    if (rm) rm.textContent = "OVSE - " + (selectedAuth === "face" ? "Face ID" : "MPIN");
+    showSc("result");
+  }, 2400);
 }
 </script>
 </body>
