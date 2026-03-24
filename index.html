@@ -863,7 +863,6 @@ body{
   <!-- ── FLOW B: DIRECT SCAN ── -->
   <p class="flow-sec-t">Flow B &mdash; Direct Scan</p>
 
-  <p class="flow-sec-t">Travel &amp; Access</p>
   <div class="flow-list">
     <div class="flow-card" onclick="startFlow('airport')" data-flow="airport" data-icon="&#9992;&#65039;">
       <div class="fc-icon">&#9992;&#65039;</div>
@@ -876,10 +875,6 @@ body{
       <div class="fc-info"><div class="fc-name">Gated Community</div><div class="fc-desc">Resident &amp; visitor verification at society entry points</div></div>
       <div class="fc-arr"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
-  </div>
-
-  <p class="flow-sec-t">Entertainment &amp; Tourism</p>
-  <div class="flow-list">
     <div class="flow-card" onclick="startFlow('themepark')" data-flow="themepark" data-icon="&#127905;">
       <div class="fc-icon">&#127905;</div>
       <div class="fc-info"><div class="fc-name">Theme Park / Aggregator</div><div class="fc-desc">Visitor age &amp; identity verification at entry booths</div></div>
@@ -891,10 +886,6 @@ body{
       <div class="fc-info"><div class="fc-name">Museum / Attraction</div><div class="fc-desc">Ticket holder identity match for heritage sites &amp; galleries</div></div>
       <div class="fc-arr"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
-  </div>
-
-  <p class="flow-sec-t">Rentals &amp; Mobility</p>
-  <div class="flow-list">
     <div class="flow-card" onclick="startFlow('bike')" data-flow="bike" data-icon="&#128690;">
       <div class="fc-icon">&#128690;</div>
       <div class="fc-info"><div class="fc-name">Cycle / Bike Rental</div><div class="fc-desc">Renter KYC before unlocking cycles, bikes &amp; scooters</div></div>
@@ -906,10 +897,6 @@ body{
       <div class="fc-info"><div class="fc-name">Auto / Cab Rental</div><div class="fc-desc">Driver &amp; passenger verification for shared mobility</div></div>
       <div class="fc-arr"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     </div>
-  </div>
-
-  <p class="flow-sec-t">Hospitality &amp; Services</p>
-  <div class="flow-list">
     <div class="flow-card" onclick="startFlow('hotel')" data-flow="hotel" data-icon="&#127976;">
       <div class="fc-icon">&#127976;</div>
       <div class="fc-info"><div class="fc-name">Hotel / Hospitality</div><div class="fc-desc">Guest check-in identity verification &amp; record keeping</div></div>
@@ -1479,11 +1466,13 @@ function startFlow(f) {
   var fpText = document.getElementById("fp-text");
   if (fpIcon) fpIcon.textContent = icon;
   if (fpText) fpText.textContent = FLOWS[f].name;
-  // Reset footer
+  // Reset footer + re-enable simulate button
   var fs = document.getElementById("footer-simulate");
   var fc = document.getElementById("footer-consent");
   if (fs) fs.style.display = "block";
   if (fc) fc.style.display = "none";
+  var sb2 = document.querySelector("#footer-simulate .btn-p");
+  if (sb2) { sb2.textContent = "Simulate QR Scan"; sb2.disabled = false; }
   showSc("scan");
 }
 
